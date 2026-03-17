@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Real Madrid Fan Page</title>
+
+<style>
+
+/* SMOOTH SCROLL */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial;
+    background: linear-gradient(to bottom, #ffffff, #e6f0ff);
+}
+
+/* HEADER */
+header {
+    background: white;
+    padding: 20px 40px;
+    position: relative;
+    border-bottom: 2px solid #ddd;
+}
+
+.logo-small {
+    position: absolute;
+    right: 30px;
+    top: 15px;
+    width: 60px;
+}
+
+/* NAV */
+nav {
+    text-align: center;
+    padding: 15px;
+    background: #dbe9ff;
+}
+
+nav a {
+    margin: 0 25px;
+    text-decoration: none;
+    color: #0033a0;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: gold;
+}
+
+/* HERO */
+.hero {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 100px 20px;
+}
+
+.side-img {
+    width: 250px;
+    opacity: 0.3;
+    transition: 0.5s;
+}
+
+.side-img:hover {
+    opacity: 0.8;
+}
+
+.center-logo {
+    width: 320px;
+    transition: transform 0.5s;
+}
+
+.center-logo:hover {
+    transform: scale(1.1);
+}
+
+/* SECTION */
+section {
+    padding: 100px 20px;
+    text-align: center;
+}
+
+h2 {
+    color: #0033a0;
+    margin-bottom: 30px;
+}
+
+/* TEAM */
+.team-img {
+    width: 70%;
+    margin: 40px auto;
+    border-radius: 10px;
+}
+
+.extra-players img {
+    width: 130px;
+    margin: 15px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.extra-players img:hover {
+    transform: scale(1.1);
+}
+
+/* TROPHIES */
+.trophies {
+    position: relative;
+}
+
+.bg-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.1;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+table {
+    margin: 40px auto;
+    border-collapse: collapse;
+    width: 60%;
+    background: white;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 12px;
+}
+
+/* GALLERY */
+.slider {
+    position: relative;
+    max-width: 600px;
+    margin: auto;
+}
+
+.slides img {
+    width: 100%;
+    display: none;
+    border-radius: 10px;
+}
+
+.slides img.active {
+    display: block;
+}
+
+/* BUTTONS */
+.btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #0033a0;
+    color: white;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+}
+
+.prev { left: -40px; }
+.next { right: -40px; }
+
+/* FOOTER */
+footer {
+    background: #dbe9ff;
+    padding: 20px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Real Madrid CF</h1>
+    <img src="images/rma.png" class="logo-small">
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#team">Team</a>
+    <a href="#trophies">Trophies</a>
+    <a href="#gallery">Gallery</a>
+</nav>
+
+<!-- HOME -->
+<div class="hero" id="home">
+    <img src="images/left.jpg" class="side-img">
+    <img src="images/rma.png" class="center-logo">
+    <img src="images/right.jpg" class="side-img">
+</div>
+
+<!-- TEAM -->
+<section id="team">
+    <h2>Team Lineup</h2>
+
+    <img src="images/team.png" class="team-img">
+
+    <h3>star players</h3>
+
+    <div class="extra-players">
+        <img src="images/mbappe.jpg">
+        <img src="images/bellingham.jpg">
+        <img src="images/vini.jpg">
+        <img src="images/rodrygo.jpg">
+    </div>
+</section>
+
+<!-- TROPHIES -->
+<section id="trophies" class="trophies">
+
+    <img src="images/trophy-bg.jpg" class="bg-img">
+
+    <h2>Trophies</h2>
+
+    <table>
+        <tr><th>Competition</th><th>Titles</th></tr>
+        <tr><td>Champions League</td><td>15</td></tr>
+        <tr><td>La Liga</td><td>35</td></tr>
+        <tr><td>Copa del Rey</td><td>20</td></tr>
+        <tr><td>Supercopa</td><td>13</td></tr>
+    </table>
+
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+    <h2>Gallery</h2>
+
+    <div class="slider">
+        <button class="btn prev" onclick="prevSlide()">❮</button>
+
+        <div class="slides">
+            <img src="images/g1.jpg" class="active">
+            <img src="images/g2.jpg">
+            <img src="images/g3.jpg">
+            <img src="images/g4.jpg">
+        </div>
+
+        <button class="btn next" onclick="nextSlide()">❯</button>
+    </div>
+</section>
+
+<footer>
+    <p>Real Madrid Fan Page</p>
+</footer>
+
+<script>
+let index = 0;
+let slides = document.querySelectorAll(".slides img");
+
+function showSlide(i){
+    slides.forEach(img => img.classList.remove("active"));
+    slides[i].classList.add("active");
+}
+
+function nextSlide(){
+    index = (index + 1) % slides.length;
+    showSlide(index);
+}
+
+function prevSlide(){
+    index = (index - 1 + slides.length) % slides.length;
+    showSlide(index);
+}
+</script>
+
+</body>
+</html>
